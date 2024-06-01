@@ -1,0 +1,5 @@
+is_global = true
+build_property.RootNamespace = MyFirstMod
+build_property.ProjectDir = /home/flavien/AliasPlugin-Lethal-Company/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 

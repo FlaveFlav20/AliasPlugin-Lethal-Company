@@ -1,0 +1,9 @@
+/home/flavien/MyFirstMod/obj/Debug/netstandard2.1/MyFirstMod.csproj.AssemblyReference.cache
+/home/flavien/MyFirstMod/obj/Debug/netstandard2.1/MyPluginInfo.cs
+/home/flavien/MyFirstMod/obj/Debug/netstandard2.1/MyFirstMod.GeneratedMSBuildEditorConfig.editorconfig
+/home/flavien/MyFirstMod/obj/Debug/netstandard2.1/MyFirstMod.AssemblyInfoInputs.cache
+/home/flavien/MyFirstMod/obj/Debug/netstandard2.1/MyFirstMod.AssemblyInfo.cs
+/home/flavien/MyFirstMod/obj/Debug/netstandard2.1/MyFirstMod.csproj.CoreCompileInputs.cache
+/home/flavien/MyFirstMod/bin/Debug/netstandard2.1/Flav20.AliasPlugin.deps.json
+/home/flavien/MyFirstMod/bin/Debug/netstandard2.1/Flav20.AliasPlugin.dll
+/home/flavien/MyFirstMod/obj/Debug/netstandard2.1/Flav20.AliasPlugin.dll

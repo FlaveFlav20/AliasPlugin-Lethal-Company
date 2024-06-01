@@ -2,29 +2,37 @@ using System.Collections.Generic;
 using System.Linq;
 using BepInEx.Configuration;
 using BepInEx.Logging;
+using DunGen;
 using MyFirstMod;
 
 namespace MyMod;
 
-class GlobalConfig
+struct KeyValue
 {
-    // We define our config variables in a public scope
+    public string key;
+    public string value;
+
+    public KeyValue(string key, string value)
+    {
+        this.key = key;
+        this.value = value;
+    }
+};
+
+class GlobalConfig
+{    
     public static ConfigEntry<string> entriesConfig;
-    public static List<List<string>> entriesList = new List<List<string>>();
-
-    private string warningMessageBadElement = "[" + MyPluginInfo.PLUGIN_NAME + "] : An element cannot be initialized. Continue to the next one. Element:";
-
-    string default_value = "vm : VIEW MONITOR ; sw : SWITCH ; s : SWITCH ; p : PING ; t : TRANSMIT ; sc : SCAN ; st : STORE ; m : MOONS ; tcb : THE COMPANY BUILDING ; exp : EXPERIMENTATION ; ass : ASSURANCE ; v : VOW ; ma : MARCH ; off : OFFENSE ; ad : ADAMANCE ; re : REND ; di : DINE ; ti : TITAN";
-
+    public static List<KeyValue> entriesList = new List<KeyValue>();
+    
     public GlobalConfig(ConfigFile cfg)
     {
         cfg.SaveOnConfigSet = false;
 
         entriesConfig = cfg.Bind(
-            "All alias",                
-            "List alias",                     
-            default_value,                    
-            "To put your alias -> \"my alias : command \""
+            Text.GlobalConfig.configSection,                
+            Text.GlobalConfig.KeyConfig,                     
+            Text.GlobalConfig.default_value,                    
+            Text.GlobalConfig.description
         ); 
 
         cfg.Save(); 
@@ -35,14 +43,12 @@ class GlobalConfig
     public void SetCOnfig()
     {
         List<string> keyValue = entriesConfig.Value.Split(';', System.StringSplitOptions.RemoveEmptyEntries).ToList<string>();
-        AliasPlugin.Logger.LogDebug("Content Init start " + keyValue.Count);
         for (int i = 0; i < keyValue.Count; i++)
         {
             List<string> elem = keyValue[i].Split(':', System.StringSplitOptions.RemoveEmptyEntries).ToList<string>();
-            AliasPlugin.Logger.LogDebug("Content Init inter " + elem.Count);
             if (elem.Count != 2)
             {
-                AliasPlugin.Logger.LogWarning(warningMessageBadElement + elem.ToString());
+                AliasPlugin.Logger.LogWarning(Text.GlobalConfig.warningMessageBadElement + elem.ToString());
                 continue;
             }
 
@@ -54,7 +60,7 @@ class GlobalConfig
             value = value.TrimStart();
             value = value.TrimEnd();
 
-            entriesList.Add(new List<string>([new string(key), new string(value)]));
+            entriesList.Add(new KeyValue(key, value));
             AliasPlugin.Logger.LogDebug("LAlala" + entriesList.Count);
         }
         

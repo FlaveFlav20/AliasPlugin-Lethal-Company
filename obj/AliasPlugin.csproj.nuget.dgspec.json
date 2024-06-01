@@ -1,0 +1,98 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/flavien/AliasPlugin-Lethal-Company/AliasPlugin.csproj": {}
+  },
+  "projects": {
+    "/home/flavien/AliasPlugin-Lethal-Company/AliasPlugin.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/flavien/AliasPlugin-Lethal-Company/AliasPlugin.csproj",
+        "projectName": "Flav20.AliasPlugin",
+        "projectPath": "/home/flavien/AliasPlugin-Lethal-Company/AliasPlugin.csproj",
+        "packagesPath": "/home/flavien/.nuget/packages/",
+        "outputPath": "/home/flavien/AliasPlugin-Lethal-Company/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/flavien/AliasPlugin-Lethal-Company/NuGet.Config",
+          "/home/flavien/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.bepinex.dev/v3/index.json": {},
+          "https://nuget.bepinex.dev/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "BepInEx.Analyzers": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.*, )"
+            },
+            "BepInEx.AssemblyPublicizer.MSBuild": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[0.4.1, )"
+            },
+            "BepInEx.Core": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.*, )"
+            },
+            "BepInEx.PluginInfoProps": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.*, )"
+            },
+            "LethalCompany.GameLibs.Steam": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[*-*, )"
+            },
+            "UnityEngine.Modules": {
+              "include": "Compile",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2022.3.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.105/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
