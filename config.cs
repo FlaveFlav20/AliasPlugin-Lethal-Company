@@ -21,10 +21,10 @@ class GlobalConfig
         cfg.SaveOnConfigSet = false;
 
         entriesConfig = cfg.Bind(
-            "List",                          // Config section
-            "GreetingText",                     // Key of this config
-            default_value,                    // Default value
-            "Greeting text upon game launch"    // Description
+            "All alias",                
+            "List alias",                     
+            default_value,                    
+            "To put your alias -> \"my alias : command \""
         ); 
 
         cfg.Save(); 
