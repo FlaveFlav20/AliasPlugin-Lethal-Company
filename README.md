@@ -18,7 +18,9 @@ Don't forget to separate your alias by a semicolon ```;```.
 
 # To add you can use LethalConfig
 
-To add your alias, you can just put your key/value and push the button add.
+To add your alias, you can just put your key/value and push the button add.  
+If it doesn't work, try to apply before pushing the button.  
+
 ![Add](gifs/add.gif)
 
 # To Remove you can use LethalConfig
@@ -27,10 +29,11 @@ It's the same system than add.
 
 # To search
 
-To add your alias, you can just put your key/value and push the button add.
-![Add](gifs/s.gif)
+To search your alias, you can just put your key and push the button search.  
+If it doesn't work, try to apply before pushing the button.  
 
->>>>>>> dev
+![Add](gifs/search.gif)
+
 ## Default configuration (List alias)
 
 ```vm : VIEW MONITOR ; sw : SWITCH ; s : SWITCH ; p : PING ; t : TRANSMIT ; sc : SCAN ; st : STORE ; m : MOONS ; tcb : THE COMPANY BUILDING ; exp : EXPERIMENTATION ; ass : ASSURANCE ; v : VOW ; ma : MARCH ; off : OFFENSE ; ad : ADAMANCE ; re : REND ; di : DINE ; ti : TITAN```
