@@ -6,6 +6,9 @@
 
 To create a fully customisable alias system.
 
+### Summary
+- [How does it work?](#How does it work?)
+
 ## How does it work?
 
 Aliases are registered with a unique string, as shown in the default configuration below.  
