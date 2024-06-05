@@ -10,33 +10,11 @@ public struct KeyValue
 {
     public string key;
     public string value;
-    private bool addToConfig;
 
-    public KeyValue(string key, string value, bool addToConfig = false)
+    public KeyValue(string key, string value)
     {
         this.key = key;
         this.value = value;
-    }
-
-    public void AddToConfig()
-    {
-        addToConfig = true;
-        var config = GlobalConfig.config.Bind("Display", key, value, "");
-        config.Value = value;
-        config.BoxedValue = value;
-        GlobalConfig.config.Save();
-    }
-
-    public void RemoveToConfig()
-    {
-        if (!addToConfig)
-        {
-            return;
-        }
-        var config = GlobalConfig.config.Bind("Display", key, "Unbind", "");
-        config.Value = "This shortcut has been unbind";
-        config.BoxedValue = "This shortcut has been unbind";
-        GlobalConfig.config.Save();
     }
 };
 
@@ -68,22 +46,6 @@ public struct ListKeysValues
         }*/
     }
 
-    public void AddAllToConFig()
-    {
-        foreach (KeyValue elem in this.keyValues)
-        {
-            elem.AddToConfig();
-        }
-    }
-
-    public void RemoveAllToConFig()
-    {
-        /*foreach (KeyValue elem in this.keyValues)
-        {
-            elem.RemoveToConfig();
-        }*/
-    }
-
     public string SearchByKey(string key)
     {
         foreach (KeyValue elem in this.keyValues)
@@ -112,17 +74,10 @@ public struct ListKeysValues
             return false;
         }
 
-        AliasPlugin.Logger.LogInfo("HAhahaha" + this.keyValues.Count);
-
         keysStr.Replace(this.keyValues[index].key, "");
         valuesStr.Replace(this.keyValues[index].value, "");
         keysValuesStr.Replace(this.keyValues[index].key + " : " + this.keyValues[index].value, "");
-        this.keyValues[index].RemoveToConfig();
         this.keyValues.RemoveAt(index);
-
-        AliasPlugin.Logger.LogInfo("HAhahahaB" + this.keyValues.Count);
-
-
         return true;   
     }
 }
@@ -171,7 +126,7 @@ public class GlobalConfig
             value = value.TrimEnd();
 
             entriesList.Add(new KeyValue(key, value));
-            AliasPlugin.Logger.LogDebug("LAlala" + entriesList.keyValues.Count);
+            AliasPlugin.Logger.LogDebug("Content config" + entriesList.keyValues.Count);
         }
         
         AliasPlugin.Logger.LogDebug("Content Init end " + entriesList.keyValues.Count);

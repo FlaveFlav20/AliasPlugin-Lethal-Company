@@ -15,11 +15,8 @@ public class LethalConfigAlias
     private string addValue = "";
     public void Init()
     {
-        LethalConfigManager.SkipAutoGenFor(Text.GlobalConfig.configSection);
         ListKeysValues keysValues = GlobalConfig.entriesList;
         var configEntryKeys = GlobalConfig.config.Bind(Text.LethalConfig.display, Text.LethalConfig.keys, keysValues.keysStr, Text.LethalConfig.descAllKeys);
-
-        //var configEntryValues = GlobalConfig.config.Bind(Text.LethalConfig.display, "Values", keysValues.valuesStr, "All values");
 
         var configAddEntryKeys = GlobalConfig.config.Bind(Text.LethalConfig.addRemove, Text.LethalConfig.keys, "",  Text.LethalConfig.addRemoveAKey);
         configAddEntryKeys.BoxedValue = "";
@@ -36,8 +33,6 @@ public class LethalConfigAlias
             }
             configEntryKeys.Value +=  ";" + configAddEntryKeys.Value;
             configEntryKeys.BoxedValue +=  ";" + configAddEntryKeys.Value;
-            //configEntryValues.Value += ";" + configAddEntryValues.Value;
-            //configEntryValues.BoxedValue += ";" + configAddEntryValues.Value;
             GlobalConfig.entriesList.Add(new KeyValue(configAddEntryKeys.Value, configAddEntryValues.Value));
             GlobalConfig.entriesConfig.Value += "; " + configAddEntryKeys.Value + " : " + configAddEntryValues.Value + " ";
             GlobalConfig.entriesConfig.BoxedValue += "; " + configAddEntryKeys.Value + " : " + configAddEntryValues.Value + " ";
@@ -69,8 +64,6 @@ public class LethalConfigAlias
 
             configEntryKeys.Value =  GlobalConfig.entriesList.keysStr;
             configEntryKeys.BoxedValue =  GlobalConfig.entriesList.keysStr;
-            //configEntryValues.Value = GlobalConfig.entriesList.valuesStr;
-            //configEntryValues.BoxedValue = GlobalConfig.entriesList.valuesStr;
             GlobalConfig.entriesConfig.Value = GlobalConfig.entriesList.keysValuesStr;
             GlobalConfig.entriesConfig.BoxedValue = GlobalConfig.entriesList.keysValuesStr;
             configAddEntryKeys.Value = Text.LethalConfig.sucess;
@@ -87,16 +80,5 @@ public class LethalConfigAlias
         {
             searchConfigEntryValue.BoxedValue = GlobalConfig.entriesList.SearchByKey(searchConfigEntryKey.Value);
         }));
-
-        /*var addToCOnfig = GlobalConfig.config.Bind("Add  all alias to config", "Add", false, "This will hardcode all alias in your config. To delete them, you must do it manaully!");
-
-        addToCOnfig.SettingChanged += (obj, args) => {
-            if (!addToCOnfig.Value)
-            {
-                GlobalConfig.entriesList.RemoveAllToConFig();
-                return;
-            }
-            GlobalConfig.entriesList.AddAllToConFig();
-        };*/
     }
 }
