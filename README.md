@@ -2,7 +2,7 @@
 
 ## Goal
 
-![alt text](<img src="gifs/add.gif" alt="GIF" width="300" height="200"> )
+![alt text](gifs/add.gif)
 
 To create a fully customisable alias system.
 
