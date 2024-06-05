@@ -14,7 +14,6 @@ using MyMod;
 
 
 [HarmonyPatch(typeof(Terminal))]
-[BepInDependency("atomic.terminalapi")]
 class AliasPatch
 { 
     [HarmonyPatch(typeof(Terminal), nameof(Terminal.ParsePlayerSentence))]
@@ -29,12 +28,12 @@ class AliasPatch
         if (length <= 0)
             return;
         
-        for (int i = 0; i < GlobalConfig.entriesList.Count; i++)
+        for (int i = 0; i < GlobalConfig.entriesList.keyValues.Count; i++)
         {
-            if (text.Length > GlobalConfig.entriesList[i].key.Length)
+            if (text.Length > GlobalConfig.entriesList.keyValues[i].key.Length)
                 continue;
             
-            text = text.Replace(GlobalConfig.entriesList[i].key, GlobalConfig.entriesList[i].value);
+            text = text.Replace(GlobalConfig.entriesList.keyValues[i].key, GlobalConfig.entriesList.keyValues[i].value);
         }
 
         __instance.screenText.text = __instance.screenText.text.Substring(0, __instance.screenText.text.Length - __instance.textAdded) + text;

@@ -16,6 +16,21 @@ To add an alias, insert ```your alias: your command``` into the configuration fi
 To delete an alias, remove the line containing the target alias and its associated command.  
 Don't forget to separate your alias by a semicolon ```;```.
 
+# To add you can use LethalConfig
+
+To add your alias, you can just put your key/value and push the button add.
+![Add](gifs/add.gif)
+
+# To Remove you can use LethalConfig
+
+It's the same system than add.
+
+# To search
+
+To add your alias, you can just put your key/value and push the button add.
+![Add](gifs/s.gif)
+
+>>>>>>> dev
 ## Default configuration (List alias)
 
 ```vm : VIEW MONITOR ; sw : SWITCH ; s : SWITCH ; p : PING ; t : TRANSMIT ; sc : SCAN ; st : STORE ; m : MOONS ; tcb : THE COMPANY BUILDING ; exp : EXPERIMENTATION ; ass : ASSURANCE ; v : VOW ; ma : MARCH ; off : OFFENSE ; ad : ADAMANCE ; re : REND ; di : DINE ; ti : TITAN```
