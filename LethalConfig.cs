@@ -15,6 +15,7 @@ public class LethalConfigAlias
     private string addValue = "";
     public void Init()
     {
+        LethalConfigManager.SkipAutoGenFor(Text.GlobalConfig.configSection);
         ListKeysValues keysValues = GlobalConfig.entriesList;
         var configEntryKeys = GlobalConfig.config.Bind(Text.LethalConfig.display, Text.LethalConfig.keys, keysValues.keysStr, Text.LethalConfig.descAllKeys);
 
@@ -31,8 +32,8 @@ public class LethalConfigAlias
             {
                 return;
             }
-            configEntryKeys.Value +=  ";" + configAddEntryKeys.Value;
-            configEntryKeys.BoxedValue +=  ";" + configAddEntryKeys.Value;
+            configEntryKeys.Value +=  "; " + configAddEntryKeys.Value + " ";
+            configEntryKeys.BoxedValue +=  "; " + configAddEntryKeys.Value + " ";
             GlobalConfig.entriesList.Add(new KeyValue(configAddEntryKeys.Value, configAddEntryValues.Value));
             GlobalConfig.entriesConfig.Value += "; " + configAddEntryKeys.Value + " : " + configAddEntryValues.Value + " ";
             GlobalConfig.entriesConfig.BoxedValue += "; " + configAddEntryKeys.Value + " : " + configAddEntryValues.Value + " ";

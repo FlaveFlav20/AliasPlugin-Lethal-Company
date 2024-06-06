@@ -36,14 +36,9 @@ public struct ListKeysValues
     public void Add(KeyValue keyValue, bool addToConfig = false)
     {
         this.keyValues.Add(keyValue);
-        this.keysStr += ";" + keyValue.key;
-        this.valuesStr += ";" + keyValue.value;
+        this.keysStr += "; " + keyValue.key + " ";
+        this.valuesStr += "; " + keyValue.value + " ";
         this.keysValuesStr += "; " + keyValue.key + " : " + keyValue.value + " "; 
-
-        /*if (addToConfig)
-        {
-            keyValue.AddToConfig();
-        }*/
     }
 
     public string SearchByKey(string key)
@@ -74,9 +69,9 @@ public struct ListKeysValues
             return false;
         }
 
-        keysStr.Replace(this.keyValues[index].key, "");
-        valuesStr.Replace(this.keyValues[index].value, "");
-        keysValuesStr.Replace(this.keyValues[index].key + " : " + this.keyValues[index].value, "");
+        keysStr = keysStr.Replace(this.keyValues[index].key, "");
+        valuesStr = valuesStr.Replace(this.keyValues[index].value, "");
+        keysValuesStr = keysValuesStr.Replace(this.keyValues[index].key + " : " + this.keyValues[index].value, "");
         this.keyValues.RemoveAt(index);
         return true;   
     }
