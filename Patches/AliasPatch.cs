@@ -27,12 +27,9 @@ class AliasPatch
 
         if (length <= 0)
             return;
-        
-        MyFirstMod.AliasPlugin.Logger.LogInfo("Length: " + ListKeysValues.keyValues.Count);
 
-        for (int i = 0; i < ListKeysValues.number; i++)
+        for (int i = 0; i < ListKeysValues.keyValues.Count; i++)
         {
-            MyFirstMod.AliasPlugin.Logger.LogInfo(ListKeysValues.keyValues[i].key);
             if (text.Length > ListKeysValues.keyValues[i].key.Length)
                 continue;
             

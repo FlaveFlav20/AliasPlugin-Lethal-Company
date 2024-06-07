@@ -15,23 +15,20 @@ public class LethalConfigAlias
     {
         LethalConfigManager.SkipAutoGenFor(Text.GlobalConfig.configSection);
         ListKeysValues keysValues = GlobalConfig.entriesList;
-        var configEntryKeys = GlobalConfig.config.Bind(Text.LethalConfig.display, Text.LethalConfig.keys, keysValues.keysStr, Text.LethalConfig.descAllKeys);
-
-        var configAddEntryKeys = GlobalConfig.config.Bind(Text.LethalConfig.addRemove, Text.LethalConfig.keys, "",  Text.LethalConfig.addRemoveAKey);
+  
+        var configAddEntryKeys = GlobalConfig.config.Bind(Text.LethalConfig.addSection, Text.LethalConfig.keys, "",  Text.LethalConfig.addAKey);
         configAddEntryKeys.BoxedValue = "";
         configAddEntryKeys.Value = "";
-        var configAddEntryValues = GlobalConfig.config.Bind(Text.LethalConfig.addRemove, Text.LethalConfig.values, "", Text.LethalConfig.addAValue);
+        var configAddEntryValues = GlobalConfig.config.Bind(Text.LethalConfig.addSection, Text.LethalConfig.values, "", Text.LethalConfig.addAValue);
         configAddEntryValues.BoxedValue = "";
         configAddEntryValues.Value = "";
 
-        LethalConfigManager.AddConfigItem(new GenericButtonConfigItem(Text.LethalConfig.add, Text.LethalConfig.add, Text.LethalConfig.addAnAlias, Text.LethalConfig.button, () => 
+        LethalConfigManager.AddConfigItem(new GenericButtonConfigItem(Text.LethalConfig.add, Text.LethalConfig.addSection, Text.LethalConfig.addAnAlias, Text.LethalConfig.button, () => 
         {
             if (configAddEntryKeys.Value == "" || configAddEntryValues.Value == "")
             {
                 return;
             }
-            configEntryKeys.Value +=  "; " + configAddEntryKeys.Value + " ";
-            configEntryKeys.BoxedValue +=  "; " + configAddEntryKeys.Value + " ";
             int index = GlobalConfig.entriesList.Append(new KeyValue(configAddEntryKeys.Value, configAddEntryValues.Value));
             GlobalConfig.entriesConfig.Value += "; " + configAddEntryKeys.Value + " : " + configAddEntryValues.Value + " ";
             GlobalConfig.entriesConfig.BoxedValue += "; " + configAddEntryKeys.Value + " : " + configAddEntryValues.Value + " ";

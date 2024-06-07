@@ -27,7 +27,6 @@ public struct ListKeysValues
     public static List<KeyValue> keyValues = [];
     public static List<ConfigEntry<string>> listConfigAliasKey = [];
     public static List<ConfigEntry<string>> listConfigAliasValue = [];
-    public static int number = 0;
     public string keysStr;
     public string valuesStr;
     public string keysValuesStr;
@@ -37,7 +36,6 @@ public struct ListKeysValues
         this.keysStr = keysStr;
         this.valuesStr = valuesStr;
         this.keysValuesStr = keysValuesStr;
-        LethalConfigManager.SkipAutoGenFor("NULL");
     }
 
     public int Append(KeyValue keyValue, bool addToConfig = false)
@@ -57,28 +55,20 @@ public struct ListKeysValues
 
         int index = ListKeysValues.keyValues.Count() - 1;
       
-        ListKeysValues.listConfigAliasKey.Add(GlobalConfig.config.Bind("Alias-" + index, "Key", "", ""));
+        ListKeysValues.listConfigAliasKey.Add(GlobalConfig.config.Bind(Text.LethalConfig.alias + index, Text.LethalConfig.key, "", ""));
         ListKeysValues.listConfigAliasKey[index].Value = keyValue.key;
         ListKeysValues.listConfigAliasKey[index].BoxedValue = keyValue.key;
 
-        ListKeysValues.listConfigAliasValue.Add(GlobalConfig.config.Bind("Alias-" + index, "Value", "", ""));
+        ListKeysValues.listConfigAliasValue.Add(GlobalConfig.config.Bind(Text.LethalConfig.alias + index, Text.LethalConfig.value, "", ""));
         ListKeysValues.listConfigAliasValue[index].Value = keyValue.value;
         ListKeysValues.listConfigAliasValue[index].BoxedValue = keyValue.value;
-        
-        ListKeysValues.number++;
-        
-        MyFirstMod.AliasPlugin.Logger.LogInfo("Number:" + number);
-        
 
-        LethalConfigManager.AddConfigItem(new GenericButtonConfigItem("Alias-" + index, Text.LethalConfig.remove, Text.LethalConfig.removeAnAlias, Text.LethalConfig.button, () => 
+        LethalConfigManager.AddConfigItem(new GenericButtonConfigItem(Text.LethalConfig.alias + index, Text.LethalConfig.remove, Text.LethalConfig.removeAnAlias, Text.LethalConfig.button, () => 
         {
-            MyFirstMod.AliasPlugin.Logger.LogInfo(index);
-            MyFirstMod.AliasPlugin.Logger.LogInfo(ListKeysValues.listConfigAliasKey.Count());
             if (index >= ListKeysValues.listConfigAliasKey.Count())
             {
                 return;
             }
-            MyFirstMod.AliasPlugin.Logger.LogInfo("Heu..." + ListKeysValues.listConfigAliasKey[index].Value);
             GlobalConfig.entriesList.RemoveByKey(ListKeysValues.listConfigAliasKey[index].Value);
         }));
         return index;
@@ -104,8 +94,7 @@ public struct ListKeysValues
         key = key.TrimEnd();
         key = key.TrimStart();
         int index = 0;
-        MyFirstMod.AliasPlugin.Logger.LogInfo("REMOOVEEEEEEEEEEEEEEEEEEEEEEEE1");
-        while (index < ListKeysValues.number)
+        while (index < ListKeysValues.keyValues.Count)
         {
             if (ListKeysValues.keyValues[index].key == key)
             {
@@ -115,13 +104,8 @@ public struct ListKeysValues
         }
         if (index >= ListKeysValues.keyValues.Count)
         {
-            MyFirstMod.AliasPlugin.Logger.LogInfo("REMOOVEEEEEEEEEEEEEEEEEEEEEEEE2");
             return false;
         }
-
-        ListKeysValues.number--;
-
-        MyFirstMod.AliasPlugin.Logger.LogInfo("Index:" + index);
 
         keysStr = keysStr.Replace(ListKeysValues.keyValues[index].key, "");
         valuesStr = valuesStr.Replace(ListKeysValues.keyValues[index].value, "");
@@ -129,11 +113,7 @@ public struct ListKeysValues
         GlobalConfig.entriesConfig.Value = keysValuesStr;
         GlobalConfig.entriesConfig.BoxedValue = keysValuesStr;
 
-        MyFirstMod.AliasPlugin.Logger.LogInfo("Length:" + ListKeysValues.keyValues.Count());
         ListKeysValues.keyValues.RemoveAt(index);
-        MyFirstMod.AliasPlugin.Logger.LogInfo("Length:" + ListKeysValues.keyValues.Count());
-
-        MyFirstMod.AliasPlugin.Logger.LogInfo("REMOOVEEEEEEEEEEEEEEEEEEEEEEEE");
 
         for (int i = 0; i < ListKeysValues.keyValues.Count; i++)
         {
@@ -142,15 +122,13 @@ public struct ListKeysValues
 
             ListKeysValues.listConfigAliasValue[i].Value = ListKeysValues.keyValues[i].value;
             ListKeysValues.listConfigAliasValue[i].BoxedValue = ListKeysValues.keyValues[i].value;
-
-            MyFirstMod.AliasPlugin.Logger.LogInfo(i + ":" + ListKeysValues.keyValues[i].key + ":" + ListKeysValues.keyValues[i].value);
         }
 
-        var lastKey = GlobalConfig.config.Bind("Alias-" + (ListKeysValues.keyValues.Count() - 1), "Key", "", "");
+        var lastKey = GlobalConfig.config.Bind(Text.LethalConfig.alias + ListKeysValues.keyValues.Count(), Text.LethalConfig.key, "", "");
         lastKey.Value = "";
         lastKey.BoxedValue = "";
 
-        var lastValue = GlobalConfig.config.Bind("Alias-" + (ListKeysValues.keyValues.Count() - 1), "Value", "", "");
+        var lastValue = GlobalConfig.config.Bind(Text.LethalConfig.alias + ListKeysValues.keyValues.Count(), Text.LethalConfig.value, "", "");
         lastValue.Value = "";
         lastValue.BoxedValue = "";
 
@@ -201,14 +179,24 @@ public class GlobalConfig
             string value = elem[1];
             value = value.TrimStart();
             value = value.TrimEnd();
-
-            AliasPlugin.Logger.LogInfo("Index:" + i);
-            AliasPlugin.Logger.LogInfo("Key:" + key);
-            AliasPlugin.Logger.LogInfo("Value:" + value);
-            AliasPlugin.Logger.LogInfo("LEEENGTH:" + ListKeysValues.keyValues.Count);
             entriesList.Append(new KeyValue(key, value));
-            AliasPlugin.Logger.LogInfo("LEEENGTH:" + ListKeysValues.keyValues.Count);
             AliasPlugin.Logger.LogDebug("Content config" + ListKeysValues.keyValues.Count);
+        }
+
+        for (int i = 0; i < 8; i++)
+        {
+            var configKey = GlobalConfig.config.Bind(Text.LethalConfig.alias + (keyValue.Count + i), Text.LethalConfig.key, "", "");
+            configKey.Value = "";
+            configKey.BoxedValue = "";
+
+            var configValue = GlobalConfig.config.Bind(Text.LethalConfig.alias + (keyValue.Count + i), Text.LethalConfig.value, "", "");
+            configValue.Value = "";
+            configValue.BoxedValue = "";
+
+        LethalConfigManager.AddConfigItem(new GenericButtonConfigItem(Text.LethalConfig.alias + (keyValue.Count + i), Text.LethalConfig.remove, Text.LethalConfig.removeAnAlias, Text.LethalConfig.button, () => 
+        {
+            return;
+        }));
         }
         
         AliasPlugin.Logger.LogDebug("Content Init end " + ListKeysValues.keyValues.Count);

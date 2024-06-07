@@ -27,10 +27,10 @@ namespace Text
         public static string value = "value";
         public static string resultValue = "Result value";
         public static string descAllKeys = "All keys with structure -> key : value";
-        public static string addRemove = "Add/Remove";
+        public static string addSection = "Add";
         public static string add = "Add";
         public static string addAnAlias = "Add an alias. Be careful, key and value must not be empty";
-        public static string addRemoveAKey = "Add/Remove a key";
+        public static string addAKey = "Add a key";
         public static string addAValue = "Add a value";
         public static string remove = "Remove";
         public static string removeAnAlias = "Remove an alias";
@@ -40,5 +40,6 @@ namespace Text
         public static string button = "click";
         public static string unbind = "Unbind";
         public static string sucess = "Sucess";
+        public static string alias = "Alias-";
     }
 }
