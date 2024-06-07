@@ -30,7 +30,7 @@ It's the same system than add.
 # To search
 
 To add your alias, you can just put your key/value and push the button add.
-![Add](gifs/s.gif)
+![search](gifs/search.gif)
 
 ## Default configuration (List alias)
 
