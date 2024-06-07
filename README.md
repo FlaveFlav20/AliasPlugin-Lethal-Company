@@ -11,7 +11,7 @@ Aliases are registered with a unique string, as shown in the default configurati
 
 # To add you can use LethalConfig
 
-To add your alias, you can go on the "Add" secion, put your key/value and push the button add.
+To add your alias, you can go on the "Add" section, put your key/value, and push the button add.
 ![Add](https://github.com/FlaveFlav20/AliasPlugin-Lethal-Company/blob/main/gifs/add.gif?raw=true)
 
 # To Remove you can use LethalConfig
