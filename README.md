@@ -17,7 +17,7 @@ To add your alias, you can go on the "Add" secion, put your key/value and push t
 # To Remove you can use LethalConfig
 
 To remove, you can go to your alias, and click to remove.
-![Remove](gif/remove.gif)
+![Remove](gifs/remove.gif)
 
 # To search
 
