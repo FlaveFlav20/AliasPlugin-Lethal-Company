@@ -11,12 +11,13 @@ Aliases are registered with a unique string, as shown in the default configurati
 
 # To add you can use LethalConfig
 
-To add your alias, you can just put your key/value and push the button add.
+To add your alias, you can go on the "Add" secion, put your key/value and push the button add.
 ![Add](gifs/add.gif)
 
 # To Remove you can use LethalConfig
 
-It's the same system than add.
+To remove, you can go to your alias, and click to remove.
+![Remove](gif/remove.gif)
 
 # To search
 
