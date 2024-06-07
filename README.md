@@ -2,8 +2,6 @@
 
 ## Goal
 
-![alt text](gifs/add.gif)
-
 To create a fully customisable alias system.
 
 ## How does it work?
