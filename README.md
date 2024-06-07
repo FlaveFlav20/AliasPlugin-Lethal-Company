@@ -9,13 +9,6 @@ To create a fully customisable alias system.
 Aliases are registered with a unique string, as shown in the default configuration below.  
 ```alias keyword : command``` This is the structure of an alias binding, and each alias binding is separated by a semicolon ```;```.
 
-## How to add/remove/edit?
-
-Characters ```:``` and ```;``` are prohibited in alias/command. You can edit the configuration file by following this rule.  
-To add an alias, insert ```your alias: your command``` into the configuration file.  
-To delete an alias, remove the line containing the target alias and its associated command.  
-Don't forget to separate your alias by a semicolon ```;```.
-
 # To add you can use LethalConfig
 
 To add your alias, you can just put your key/value and push the button add.
@@ -29,6 +22,13 @@ It's the same system than add.
 
 To add your alias, you can just put your key/value and push the button add.
 ![search](gifs/search.gif)
+
+## How to add/remove/edit?
+
+Characters ```:``` and ```;``` are prohibited in alias/command. You can edit the configuration file by following this rule.  
+To add an alias, insert ```your alias: your command``` into the configuration file.  
+To delete an alias, remove the line containing the target alias and its associated command.  
+Don't forget to separate your alias by a semicolon ```;```.
 
 ## Default configuration (List alias)
 
