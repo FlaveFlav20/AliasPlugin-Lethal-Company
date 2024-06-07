@@ -27,13 +27,13 @@ class AliasPatch
 
         if (length <= 0)
             return;
-        
-        for (int i = 0; i < GlobalConfig.entriesList.keyValues.Count; i++)
+
+        for (int i = 0; i < ListKeysValues.keyValues.Count; i++)
         {
-            if (text.Length > GlobalConfig.entriesList.keyValues[i].key.Length)
+            if (text.Length > ListKeysValues.keyValues[i].key.Length)
                 continue;
             
-            text = text.Replace(GlobalConfig.entriesList.keyValues[i].key, GlobalConfig.entriesList.keyValues[i].value);
+            text = text.Replace(ListKeysValues.keyValues[i].key, ListKeysValues.keyValues[i].value);
         }
 
         __instance.screenText.text = __instance.screenText.text.Substring(0, __instance.screenText.text.Length - __instance.textAdded) + text;

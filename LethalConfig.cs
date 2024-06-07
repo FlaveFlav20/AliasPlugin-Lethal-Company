@@ -11,64 +11,29 @@ using LethalConfig.ConfigItems;
 using System;
 public class LethalConfigAlias
 {
-    private string addKey = "";
-    private string addValue = "";
     public void Init()
     {
         LethalConfigManager.SkipAutoGenFor(Text.GlobalConfig.configSection);
         ListKeysValues keysValues = GlobalConfig.entriesList;
-        var configEntryKeys = GlobalConfig.config.Bind(Text.LethalConfig.display, Text.LethalConfig.keys, keysValues.keysStr, Text.LethalConfig.descAllKeys);
-
-        var configAddEntryKeys = GlobalConfig.config.Bind(Text.LethalConfig.addRemove, Text.LethalConfig.keys, "",  Text.LethalConfig.addRemoveAKey);
+  
+        var configAddEntryKeys = GlobalConfig.config.Bind(Text.LethalConfig.addSection, Text.LethalConfig.keys, "",  Text.LethalConfig.addAKey);
         configAddEntryKeys.BoxedValue = "";
         configAddEntryKeys.Value = "";
-        var configAddEntryValues = GlobalConfig.config.Bind(Text.LethalConfig.addRemove, Text.LethalConfig.values, "", Text.LethalConfig.addAValue);
+        var configAddEntryValues = GlobalConfig.config.Bind(Text.LethalConfig.addSection, Text.LethalConfig.values, "", Text.LethalConfig.addAValue);
         configAddEntryValues.BoxedValue = "";
         configAddEntryValues.Value = "";
 
-        LethalConfigManager.AddConfigItem(new GenericButtonConfigItem(Text.LethalConfig.addRemove, Text.LethalConfig.add, Text.LethalConfig.addAnAlias, Text.LethalConfig.button, () => 
+        LethalConfigManager.AddConfigItem(new GenericButtonConfigItem(Text.LethalConfig.add, Text.LethalConfig.addSection, Text.LethalConfig.addAnAlias, Text.LethalConfig.button, () => 
         {
             if (configAddEntryKeys.Value == "" || configAddEntryValues.Value == "")
             {
                 return;
             }
-            configEntryKeys.Value +=  "; " + configAddEntryKeys.Value + " ";
-            configEntryKeys.BoxedValue +=  "; " + configAddEntryKeys.Value + " ";
-            GlobalConfig.entriesList.Add(new KeyValue(configAddEntryKeys.Value, configAddEntryValues.Value));
+            int index = GlobalConfig.entriesList.Append(new KeyValue(configAddEntryKeys.Value, configAddEntryValues.Value));
             GlobalConfig.entriesConfig.Value += "; " + configAddEntryKeys.Value + " : " + configAddEntryValues.Value + " ";
             GlobalConfig.entriesConfig.BoxedValue += "; " + configAddEntryKeys.Value + " : " + configAddEntryValues.Value + " ";
             configAddEntryKeys.Value = "";
             configAddEntryKeys.BoxedValue = "";
-            configAddEntryValues.Value = "";
-            configAddEntryValues.BoxedValue = "";
-            GlobalConfig.config.Save();
-        }));
-
-        LethalConfigManager.AddConfigItem(new GenericButtonConfigItem(Text.LethalConfig.addRemove, Text.LethalConfig.remove, Text.LethalConfig.removeAnAlias, Text.LethalConfig.button, () => 
-        {
-            if (configAddEntryKeys.Value == "")
-            {
-                return;
-            }
-
-            if (!GlobalConfig.entriesList.RemoveByKey(configAddEntryKeys.Value))
-            {
-                configAddEntryKeys.Value = Text.LethalConfig.unbind;
-                configAddEntryKeys.BoxedValue = Text.LethalConfig.unbind;
-                configAddEntryValues.Value = Text.LethalConfig.unbind;
-                configAddEntryValues.BoxedValue = Text.LethalConfig.unbind;
-                GlobalConfig.config.Save();
-                return;
-            }
-
-            GlobalConfig.entriesList.RemoveByKey(configAddEntryKeys.Value);
-
-            configEntryKeys.Value =  GlobalConfig.entriesList.keysStr;
-            configEntryKeys.BoxedValue =  GlobalConfig.entriesList.keysStr;
-            GlobalConfig.entriesConfig.Value = GlobalConfig.entriesList.keysValuesStr;
-            GlobalConfig.entriesConfig.BoxedValue = GlobalConfig.entriesList.keysValuesStr;
-            configAddEntryKeys.Value = Text.LethalConfig.sucess;
-            configAddEntryKeys.BoxedValue = Text.LethalConfig.sucess;
             configAddEntryValues.Value = "";
             configAddEntryValues.BoxedValue = "";
             GlobalConfig.config.Save();
