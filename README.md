@@ -9,12 +9,12 @@ To create a fully customisable alias system.
 Aliases are registered with a unique string, as shown in the default configuration below.  
 ```alias keyword : command``` This is the structure of an alias binding, and each alias binding is separated by a semicolon ```;```.
 
-# To add you can use LethalConfig
+# To add with LethalConfig
 
 To add your alias, you can go on the "Add" section, put your key/value, and push the button add.
 ![Add](https://github.com/FlaveFlav20/AliasPlugin-Lethal-Company/blob/main/gifs/add.gif?raw=true)
 
-# To Remove you can use LethalConfig
+# To remove with LethalConfig
 
 To remove, you can go to your alias, and click to remove.
 ![Remove](https://github.com/FlaveFlav20/AliasPlugin-Lethal-Company/blob/main/gifs/remove.gif?raw=true)
@@ -24,7 +24,7 @@ To remove, you can go to your alias, and click to remove.
 To add your alias, you can just put your key/value and push the button add.
 ![search](https://github.com/FlaveFlav20/AliasPlugin-Lethal-Company/blob/main/gifs/search.gif?raw=true)
 
-## How to add/remove/edit?
+## How to add/remove/edit by hands?
 
 Characters ```:``` and ```;``` are prohibited in alias/command. You can edit the configuration file by following this rule.  
 To add an alias, insert ```your alias: your command``` into the configuration file.  
