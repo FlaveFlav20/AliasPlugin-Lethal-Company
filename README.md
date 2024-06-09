@@ -1,5 +1,11 @@
 # Custom alias plugin for lethal company
 
+### Summary
+
+- [To add with LethalConfig](#to-add-with-lethalconfig)
+- [To remove with LethalConfig](#to-remove-with-lethalconfig)
+- [How to add/remove/edit by hands?](#how-to-addremoveedit-by-hands)
+
 ## Goal
 
 To create a fully customisable alias system.
