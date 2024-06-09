@@ -2,9 +2,12 @@
 
 ### Summary
 
-- [To add with LethalConfig](#to-add-with-lethalconfig)
-- [To remove with LethalConfig](#to-remove-with-lethalconfig)
-- [How to add/remove/edit by hands?](#how-to-addremoveedit-by-hands)
+- To add/remove an alias:
+  - [To add with LethalConfig](#to-add-with-lethalconfig)
+  - [To remove with LethalConfig](#to-remove-with-lethalconfig)
+  - [How to add/remove/edit by hands?](#how-to-addremoveedit-by-hands)
+- To search a specific alias easily:
+  - [To search with LethalConfig](#to-search-with-lethalconfig)
 
 ## Goal
 
@@ -25,7 +28,7 @@ To add your alias, you can go on the "Add" section, put your key/value, and push
 To remove, you can go to your alias, and click to remove.
 ![Remove](https://github.com/FlaveFlav20/AliasPlugin-Lethal-Company/blob/main/gifs/remove.gif?raw=true)
 
-# To search
+# To search with LethalConfig
 
 To add your alias, you can just put your key/value and push the button add.
 ![search](https://github.com/FlaveFlav20/AliasPlugin-Lethal-Company/blob/main/gifs/search.gif?raw=true)
